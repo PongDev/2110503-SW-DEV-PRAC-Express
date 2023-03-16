@@ -32,7 +32,7 @@ exports.getHospitals = async (req, res, next) => {
 
     //Select Fields
     if (req.query.select) {
-      const fields = req.quey.select.split(",").join(" ");
+      const fields = req.query.select.split(",").join(" ");
       query = query.select(fields);
     }
 

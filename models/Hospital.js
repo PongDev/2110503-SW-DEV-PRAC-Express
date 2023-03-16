@@ -48,7 +48,7 @@ HospitalSchema.pre("remove", async function (next) {
 });
 
 //Reverse populate with virtuals
-HospitalSchema.virtuals("appointments", {
+HospitalSchema.virtual("appointments", {
   ref: "Appointment",
   localField: "_id",
   foreignField: "hospital",
