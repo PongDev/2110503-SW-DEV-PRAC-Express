@@ -12,14 +12,14 @@ exports.getHospitals = async (req, res, next) => {
     const reqQuery = { ...req.query };
 
     //Fields to exclude
-    const removeFields = ["select", "sort"];
+    const removeFields = ["select", "sort", "page", "limit"];
 
     //Loop over remove fields and delete them from reqQuery
     removeFields.forEach((param) => delete reqQuery[param]);
     console.log(reqQuery);
 
     //Create query string
-    let queryStr = JSON.stringify(req.query);
+    let queryStr = JSON.stringify(reqQuery);
 
     //Create operators ($gt, $gte, etc)
     queryStr = queryStr.replace(
