@@ -42,7 +42,7 @@ const HospitalSchema = new mongoose.Schema(
 
 //Cascade delete appointments when a hospital is deleted
 HospitalSchema.pre("remove", async function (next) {
-  console.log("Appointments begin removed from hospital ${this._id}");
+  console.log(`Appointments begin removed from hospital ${this._id}`);
   await this.model("Appointment").deleteMany({ hospital: this._id });
   next();
 });

@@ -3,7 +3,7 @@ const Hospital = require("../models/Hospital");
 
 //@desc Get all appointments
 //@route GET /api/v1/appointments
-//@access Public
+//@access Private
 exports.getAppointments = async (req, res, next) => {
   let query;
   //General users can see only their appointments!
@@ -14,7 +14,9 @@ exports.getAppointments = async (req, res, next) => {
     });
   } else {
     //If you are an admin, you can see all!
-    query = Appointment.find().populate({
+    query = Appointment.find(
+      req.params.hospitalId ? { hospital: req.params.hospitalId } : {}
+    ).populate({
       path: "hospital",
       select: "name province tel",
     });
@@ -36,6 +38,9 @@ exports.getAppointments = async (req, res, next) => {
   }
 };
 
+//@desc Get single appointment
+//@route GET /api/v1/appointments/:id
+//@access Public
 exports.getAppointment = async (req, res, next) => {
   try {
     const appointment = await Appointment.findById(req.params.id).populate({
