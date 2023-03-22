@@ -2,3 +2,7 @@
 node_modules/*
 # ignore config file
 config/config.env
+
+.env
+
+mysql
