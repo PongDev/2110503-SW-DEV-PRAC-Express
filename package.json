@@ -23,6 +23,8 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.9.1",
     "mysql": "^2.18.1",
+    "swagger-jsdoc": "^6.0.0",
+    "swagger-ui-express": "^4.6.2",
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {
